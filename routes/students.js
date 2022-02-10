@@ -49,11 +49,20 @@ router.get('/delete', async (req, res) => {
 });
 
 // Update GET
-router.get('/edit', (req, res) => {
+router.get('/edit', async (req, res) => {
+  let student = await DimitrisGioulisStudents.findAll({
+    where: {
+      id: req.query.id,
+    }
+  });
   res.render('students/edit', {
     title: 'Student Edit Page',
     message: 'Update the Student',
-    id: req.query.id
+    id: req.query.id,
+    firstName: student[0].dataValues.firstName,
+    lastName: student[0].dataValues.lastName,
+    dateOfBirth: student[0].dataValues.dateOfBirth,
+    tuitionFees: student[0].dataValues.tuitionFees
   });
 });
 
@@ -63,8 +72,8 @@ router.post('/edit', async function (req, res) {
     {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      dateOfBirth: req.body.date,
-      tuitionFees: req.body.tuition
+      dateOfBirth: req.body.dateOfBirth,
+      tuitionFees: req.body.tuitionFees
     },
     {
       where: {

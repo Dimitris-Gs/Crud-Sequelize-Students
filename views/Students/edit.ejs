@@ -16,11 +16,11 @@
     <%= message %>
   </p>
   <form action="/students/edit" method="POST">
-    <input type="hidden" value="<%= id %>" name="id">
-    First name: <input type="text" name="firstName" title="firstName" /><br />
-    Last Name: <input type="text" name="lastName" title="lastName" /><br />
-    Date of Birth: <input type="date" name="date" title="date"><br />
-    Tuition fees: <input type="text" name="tuition" title="tuition"><br />
+    <input type="hidden" value="<%=id%>" name="id">
+    First name: <input value="<%=firstName%>" type="text" name="firstName" title="firstName" /><br />
+    Last Name: <input value="<%=lastName%>" type="text" name="lastName" title="lastName" /><br />
+    Date of Birth: <input value="<%=dateOfBirth%>" type="date" name="dateOfBirth" title="dateOfBirth"><br />
+    Tuition fees: <input value="<%=tuitionFees%>" type="text" name="tuitionFees" title="tuitionFees"><br />
     <button type="submit">Edit</button>
   </form>
 </body>
